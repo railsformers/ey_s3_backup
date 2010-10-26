@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email = %q{tomas@cigan.cz}
   s.extra_rdoc_files = ["README.rdoc", "lib/ey_s3_backup.rb"]
   s.files = ["Manifest", "README.rdoc", "Rakefile", "data/before_restart.rb", "data/before_symlink.rb", "data/ey_backup.rake", "data/ey_backup.yml", "data/schedule.rb", "gem_tasks/ey_backup.rake", "gem_tasks/install.rake", "init.rb", "lib/ey_s3_backup.rb", "ey_s3_backup.gemspec"]
-  s.homepage = %q{www.railsformers.com}
+  s.homepage = %q{http://www.railsformers.com}
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Ey_s3_backup", "--main", "README.rdoc"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{ey_s3_backup}
