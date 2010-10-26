@@ -1,0 +1,12 @@
+Manifest
+README.rdoc
+Rakefile
+data/before_restart.rb
+data/before_symlink.rb
+data/ey_backup.rake
+data/ey_backup.yml
+data/schedule.rb
+gem_tasks/ey_backup.rake
+gem_tasks/install.rake
+init.rb
+lib/ey_s3_backup.rb
