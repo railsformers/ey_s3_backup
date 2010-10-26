@@ -4,7 +4,7 @@ require 'echoe'
 
 Echoe.new('ey_s3_backup', '0.0.1') do |p|
   p.description    = "Backup to S3"
-  p.url            = "www.railsformers.com"
+  p.url            = "http://www.railsformers.com"
   p.author         = "Tomas Cigan"
   p.email          = "tomas@cigan.cz"
   p.ignore_pattern = ["tmp/*", "script/*"]
