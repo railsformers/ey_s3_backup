@@ -5,17 +5,20 @@ require 'fileutils'
 
 class Backup
   def initialize(type)
-    require File.join(File.dirname(__FILE__), 'config/environment')
-    @cfg = YAML::load(File.open(File.join(RAILS_ROOT, 'config', 'ey_backup.yml')))
-    puts @cfg.inspect
-    @file_name = ""
-    @backup_dir = @cfg['engine_yard']['backup_tmp_dir']
-    @target_bucket = @cfg['amazon_s3']['bucket']
-    @application = @cfg['engine_yard']['application_name']
-    @keep=@cfg['amazon_s3']['keep_databases']
-    @type=type
-    puts "#{@backup_dir} #{@target_bucket} #{@application} #{@keep} #{@type}"
-    self.run
+    require File.join('config/environment')
+    begin
+      @cfg = YAML::load(File.open(File.join(RAILS_ROOT, 'config', 'ey_backup.yml')))
+      @file_name = ""
+      @backup_dir = @cfg['engine_yard']['backup_tmp_dir']
+      @target_bucket = @cfg['amazon_s3']['bucket']
+      @application = @cfg['engine_yard']['application_name']
+      @keep=@cfg['amazon_s3']['keep_databases']
+      @type=type
+      puts "#{@backup_dir} #{@target_bucket} #{@application} #{@keep} #{@type}"
+      self.run
+    rescue
+      exit_with_error("error loading configuration ey_backup.yml")
+    end
   end
   
   def run
@@ -26,7 +29,7 @@ class Backup
       @keep=@cfg['amazon_s3']['keep_files']
       self.dump_files
     else
-      puts "Typ muze byt pouze files/database"
+      puts "Type = [ files, database ]"
     end
 
     self.s3_connect
@@ -104,6 +107,10 @@ class Backup
       #puts "mazu #{@last_backup}"
       AWS::S3::S3Object.delete(@last_backup, @target_bucket)
     end
+  end
+
+  def exit_with_error(err="")
+    puts "Error: " + err
   end
 end
 #------------------------------------------------------------------------------#

@@ -17,7 +17,6 @@ namespace :ey_s3_backup do
     FileUtils.mkdir(Dir.getwd + "/config")
     FileUtils.cp(src("before_restart.rb"), "./deploy")
     #FileUtils.cp(src("before_symlink.rb"), "./deploy")
-    FileUtils.cp(src("ey_backup.rake"), "./lib/tasks")
     FileUtils.cp(src("ey_backup.yml"), "./config")
     FileUtils.cp(src("schedule.rb"), "./config")
     puts "Done."
