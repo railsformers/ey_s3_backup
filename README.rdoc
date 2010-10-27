@@ -1,3 +1,16 @@
 Source:
 
 http://github.com/railsformers/ey_s3_backup
+
+== Installing ey_s3_backup
+
+Add to Rakefile:
+Dir["#{Gem.searcher.find('ey_s3_backup').full_gem_path}/gem_tasks/*.rake"].each { |ext| load ext } rescue nil
+
+run rake ey_s3_backup:install
+edit config/ey_backup.yml
+edit config/schedule.rb
+
+== Manual backups
+rake ey_s3_backup:db
+rake ey_s3_backup:files
