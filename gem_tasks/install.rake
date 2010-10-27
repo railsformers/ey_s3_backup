@@ -1,7 +1,8 @@
 require 'fileutils'
 
 def src(*p)
-  f << FileUtils.cp("#{File.dirname(__FILE__)}/../../data/")
+  f = Array.new
+  f << "#{File.dirname(__FILE__)}/../data/"
   f = f + p
   return File.join(f)
 end
