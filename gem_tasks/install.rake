@@ -12,9 +12,9 @@ namespace :ey_s3_backup do
   desc "Install ey_s3_backup files"
   task :install => :environment do
     puts "Installing files..."
+    puts "Creating /deploy"
     FileUtils.mkdir(Dir.getwd + "/deploy")
-    FileUtils.mkdir(Dir.getwd + "/lib/tasks")
-    FileUtils.mkdir(Dir.getwd + "/config")
+
     FileUtils.cp(src("before_restart.rb"), "./deploy")
     #FileUtils.cp(src("before_symlink.rb"), "./deploy")
     FileUtils.cp(src("ey_backup.yml"), "./config")
