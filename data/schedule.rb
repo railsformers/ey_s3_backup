@@ -19,9 +19,9 @@
 
 # Learn more: http://github.com/javan/whenever
 every 1.day, :at => '4:00 am' do
-  rake "ey_backup:db"
+  command "bundle exec rake ey_backup:db"
 end
 
 every :sunday, :at => '4:00 am' do
-  rake "ey_backup:files"
+  command "bundle exec ey_backup:files"
 end
