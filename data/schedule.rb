@@ -18,10 +18,22 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+job_type :bundle_rake,    "cd :path && RAILS_ENV=:environment bundle exec rake :task :output"
+
+# Learn more: http://github.com/javan/whenever
 every 1.day, :at => '4:00 am' do
-  command "bundle exec rake ey_backup:db"
+  bundle_rake "ey_s3_backup:db"
 end
 
 every 4.day, :at => '4:05 am' do
-  command "bundle exec ey_backup:files"
+  bundle_rake "ey_s3_backup:files"
 end
+
+#every 15.minutes, :at => '5' do
+#  rake "xapian:update_index"
+#end
+#
+#every 15.minutes do
+#  rake "notify_about_finished_auctions"
+#end

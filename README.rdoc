@@ -4,13 +4,32 @@ http://github.com/railsformers/ey_s3_backup
 
 == Installing ey_s3_backup
 
+Add to Gemfile:
+gem "ey_s3_backup", :git => "git://github.com/railsformers/ey_s3_backup.git"
+
+run bundle install
+
 Add to Rakefile:
-Dir["#{Gem.searcher.find('ey_s3_backup').full_gem_path}/gem_tasks/*.rake"].each { |ext| load ext } rescue nil
+Dir["#{Gem.searcher.find('ey_s3_backup').full_gem_path}/gem_tasks/*.rake"].each { |ext| load ext }
 
 run rake ey_s3_backup:install
-edit config/ey_backup.yml
-edit config/schedule.rb
+edit config/ey_backup.yml (application name)
+optionally edit config/schedule.rb
 
 == Manual backups
-rake ey_s3_backup:db
-rake ey_s3_backup:files
+bundle exec rake ey_s3_backup:db
+bundle exec rake ey_s3_backup:files
+
+== Config file example
+
+amazon_s3:
+  access_key_id: access_key
+  secret_access_key: secret_key
+  bucket: ey-backups
+  keep_databases: 10
+  keep_files: 10
+
+engine_yard:
+  application_name: *engine yard application name*
+  backup_tmp_dir: /tmp *temporary dir for compressed backups*
+  pubic_files_dir: public_files *relative to shared directory of project*
