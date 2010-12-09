@@ -7,5 +7,5 @@ amazon_s3:
 
 engine_yard:
   application_name: !!!!! EDIT application_name EDIT !!!!!
-  backup_tmp_dir: /tmp
-  pubic_files_dir: public_files
+  backup_tmp_dir: /mnt/backups
+  public_files_dir: public_files
